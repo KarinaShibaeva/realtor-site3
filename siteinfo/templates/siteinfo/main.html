@@ -1,0 +1,115 @@
+{% extends "root.html" %}
+{% block content %}
+
+<style>
+
+.carousel-inner{
+  height: 600px !important;
+  margin: 0 auto;
+}
+.carousel-inner img {
+  height: 700px !important;
+}
+h5{
+    font-size: 58px;
+}
+p {
+ font-size: 50px;
+}
+.card-img-overlay{
+ height: 600px !important;
+ margin: 0 auto;
+}
+.card {
+    transition: 1s; /* Время эффекта */
+    width: 100%;
+    height: 27vw;
+    object-fit: cover;
+   }
+.card:hover {
+    transform: scale(1.1); /* Увеличиваем масштаб */
+   }
+
+
+</style>
+<div class="w-auto d-flex flex-column justify-content-center">
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/media/6.jpg" class="d-block w-100" alt="..." style="filter: brightness(40%)">
+      <div class="carousel-caption position-absolute bottom-50">
+        <h5>АН "Новые горизонты"</h5>
+        <p class="fs-3">Осуществляет все операции с недвижимостью более 20 лет</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/media/7.jpg" class="d-block w-100" alt="..." style="filter: brightness(40%)">
+      <div class="carousel-caption position-absolute bottom-50">
+        <h5>АН "Новые горизонты"</h5>
+        <p class="fs-3">Осуществляет все операции с недвижимостью более 20 лет</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/media/8.jpg" class="d-block w-100" alt="..." style="filter: brightness(40%)">
+      <div class="carousel-caption position-absolute bottom-50">
+        <h5>АН "Новые горизонты"</h5>
+        <p class="fs-3">Осуществляет все операции с недвижимостью более 20 лет</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<div class="gallery-inner container py-lg-0 py-3 mt-5 d-flex justify-content-center">
+      <div class="row stats-con pb-lg-3 d-flex justify-content-beetwen">
+        <div class="col-lg-4 col-6">
+          <p class="counter" style="color: #5F9EA0">20</p>
+          <h4>Лет на рынке</h4>
+        </div>
+        <div class="col-lg-4 col-6">
+          <p class="counter" style="color: #5F9EA0">1698</p>
+          <h4>Сделок с недвижимостью</h4>
+        </div>
+        <div class="col-lg-4 col-6">
+          <p class="counter" style="color: #5F9EA0">2800</p>
+          <h4>Обращений из разных городов</h4>
+        </div>
+    </div>
+</div>
+
+<div class="w-100 h-100 mt-5 d-flex justify-content-around">
+<a class="nav-link text-dark" href="{% url 'flats:list' %}">
+<div class="card" style="width: 18rem;">
+  <img src="/media/10.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3 class="card-text">Покупка недвижимости</h3>
+    <p class="fs-5">Быстро, понятно, без "подводных камней"</p>
+  </div>
+</div>
+</a>
+<div class="card" style="width: 18rem;">
+  <img src="/media/12.jpeg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3 class="card-text">Вторичный рынок</h3>
+    <p class="fs-5">Быстро и выгодно продать квартиру</p>
+  </div>
+</div>
+<a class="nav-link text-dark" href="{% url 'sale:sale' %}">
+<div class="card" style="width: 18rem;">
+  <img src="/media/11.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3 class="card-text">Новострой</h3>
+    <p class="fs-5">Выбираем квартиру в новостройке</p>
+  </div>
+</div>
+</a>
+</div>
+
+
+{% endblock %}

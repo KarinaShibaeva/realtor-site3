@@ -2,6 +2,15 @@
 {% load humanize %}
 {% block content %}
 {% for object in object_list %}
+<style>
+.myfield{
+            border:1px solid #ccc; 
+            border-radius:5px;
+            height:50px;
+            width:300px;
+            margin: 10px 10px 10px 0;
+        }
+</style>
 <div style="margin-top: 80px;">
     <h1 class="text-center">{{ pk.object_name }}</h1>
 </div>
@@ -52,16 +61,33 @@
 </div>
 {% endfor %}
 {% endfor %}
+<div class="mt-4 d-flex flex-column justify-content-center" style="background-color: #F0FFF0;">
 <div class="mt-5 ms-5 me-5">
     <h3 class="text-center">Остались вопросы или нужна консультация?</h3>
     <p class="text-center">Мы знаем, как быстро и без рисков купить квартиру в Санкт-Петербурге и Ленинградской области. Это возможно благодаря большому опыту работы в сфере недвижимости. В нашей базе большой выбор квартир, мы подберем для Вас идеальный вариант на выгодных условиях.</p>
 </div>
+<div class="d-flex justify-content-around align-items-center">
+<div class="d-flex flex-column">
+    <div class="d-flex flex-column align-items-start">
+        <h3 class="text-center">Email</h3>
+        <p>newgorinfo@mail.ru</p>
+    </div>
+     <div class="d-flex flex-column align-items-start">
+         <h3 class="text-center">Адрес</h3>
+         <p>Санкт-Петербург, ул.1-й Верхний переулок, д.3, офис 205</p>
+     </div>
+      <div class="d-flex flex-column align-items-start">
+          <h3 class="text-center">Телефон</h3>
+          <p>+7(999)999-99-99</p>
+      </div>
+</div>
+<div class="d-flex flex-column">
 <form method="POST" novalidate>
     {% csrf_token %}
-    <div>
+    
         {% for field in form %}
-        <div class="form-group d-flex justify-content-between align-items-center" style="width: 50rem">
-            <label for="disabledTextInput" class="form-label">{{field.label_tag}}</label>
+        <div class="form-group d-flex justify-content-between align-items-center" style="width: 25rem;">
+        
             <div>{{field}}</div>
             {% if field.errors%}
             {% for error in field.errors %}
@@ -72,8 +98,10 @@
             {% endif %}
         </div>
         {% endfor %}
+        <input type="submit" class="btn btn-secondary w-75" value="Отправить" >
         </div>
-        <input type="submit" value="Send" >
+        
     </form>
-
+    </div>
+</div>
 {% endblock %}

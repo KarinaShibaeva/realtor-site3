@@ -31,7 +31,7 @@ def sale_id_view(request, pk):
     pk = get_object_or_404(Flat, pk=pk)
     #comments = pk.comments.all()
     if request.method=="POST": 
-        form = CommentForm(request.POST)
+        form = CommentForm(request.POST, request.FILES)
         if form.is_valid(): 
             comment =  form.save(commit=False) 
             #comment. = pk 

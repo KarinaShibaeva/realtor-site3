@@ -1,53 +1,79 @@
 {% extends "root.html" %}
 {% load humanize %}
 {% block content %}
-
+{% for object in object_list %}
 <div style="margin-top: 80px;">
     <h1 class="text-center">{{ pk.object_name }}</h1>
+</div>
 <div class="mt-4 d-flex justify-content-evenly">
-<div class="card mb-3" style="width: 18rem; background-color: #fffff;">
-  <div class="card-body">
-    <h5 class="card-title text-dark text-center">Цены от {{ pk.price|floatformat:0|intcomma }} ₽</h5>
-    <p class="card-text text-dark text-center">Цены в {{ pk.object_name }} начинаются от {{ pk.price|floatformat:0|intcomma }} ₽</p>
-  </div>
+    <div class="card mb-3" style="width: 18rem; background-color: #fffff;">
+      <div class="card-body">
+        <h5 class="card-title text-dark text-center">Цены от {{ pk.price|floatformat:0|intcomma }} ₽</h5>
+        <p class="card-text text-dark text-center">Цены в {{ pk.object_name }} начинаются от {{ pk.price|floatformat:0|intcomma }} ₽</p>
+      </div>
+    </div>
+    <div class="card mb-3" style="width: 18rem; background-color: #fffff;">
+      <div class="card-body">
+        <h5 class="card-title text-dark text-center">Район {{ object.location }}</h5>
+        <p class="card-text text-dark text-center">ЖК находится в районе {{ object.location }}</p>
+      </div>
+    </div>
+    <div class="card mb-3" style="width: 18rem; background-color: #fffff;">
+      <div class="card-body">
+        <h5 class="card-title text-dark text-center">Ипотека</h5>
+        <p class="card-text text-dark text-center">Можно оформить ипотеку от 0,1% до 5,7%</p>
+      </div>
+    </div>
+    <div class="card mb-3" style="width: 18rem; background-color: #fffff;">
+      <div class="card-body">
+        <h5 class="card-title text-dark text-center">Сдача объекта</h5>
+        <p class="card-text text-dark text-center">2 квартал 2025г.</p>
+      </div>
+    </div>
 </div>
-<div class="card mb-3" style="width: 18rem; background-color: #fffff;">
-  <div class="card-body">
-    <h5 class="card-title text-dark text-center">Район {{ object.location }}</h5>
-    <p class="card-text text-dark text-center">ЖК находится в районе {{ object.location }}</p>
-  </div>
-</div>
-<div class="card mb-3" style="width: 18rem; background-color: #fffff;">
-  <div class="card-body">
-    <h5 class="card-title text-dark text-center">Ипотека</h5>
-    <p class="card-text text-dark text-center">Можно оформить ипотеку от 0,1% до 5,7%</p>
-  </div>
-</div>
-<div class="card mb-3" style="width: 18rem; background-color: #fffff;">
-  <div class="card-body">
-    <h5 class="card-title text-dark text-center">Сдача объекта</h5>
-    <p class="card-text text-dark text-center">2 квартал 2025г.</p>
-  </div>
-</div>
-</div>
-<div class="mt-4" style="background-color: #F0FFF0;">
+<div class="mt-4 d-flex" style="background-color: #F0FFF0;">
 <h3 class="text-center">Описание</h3>
-<div class="d-flex ms-5 me-5">
-    <p class=" me-5">{{ object.text }}</p>
-    <img src="{{ pk.img.url }}" alt="" width="500px" height="300px">
+    <div class="d-flex ms-5 me-5 align-items-center" style="width: 60rem;">
+        <p class=" me-5">{{ object.text|linebreaksbr }}</p>
+        <img src="{{ pk.img.url }}" alt="" width="500px" height="300px">
+    </div>
 </div>
+<div class="mt-5">
+    <h3 class="text-center">Квартиры в {{ pk.object_name }}</h3>
 </div>
 
-{% for category in category_list %}
-    
+{% for category in category_list.all %}
 <div class="card" style="width: 18rem;">
-  <img src="{{ category.img.url }}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h3 class="card-text">{{ category.name }}</h3>
-    <p class="fs-5">От {{ category.price }} ₽</p>
-  </div>
+    <img src="{{ category.img.url }}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h3 class="card-text">{{ category.name }}</h3>
+        <p class="fs-5">От {{ category.price|floatformat:0|intcomma }} ₽</p>
+    </div>
 </div>
-<div>
-
 {% endfor %}
+{% endfor %}
+<div class="mt-5 ms-5 me-5">
+    <h3 class="text-center">Остались вопросы или нужна консультация?</h3>
+    <p class="text-center">Мы знаем, как быстро и без рисков купить квартиру в Санкт-Петербурге и Ленинградской области. Это возможно благодаря большому опыту работы в сфере недвижимости. В нашей базе большой выбор квартир, мы подберем для Вас идеальный вариант на выгодных условиях.</p>
+</div>
+<form method="POST" novalidate>
+    {% csrf_token %}
+    <div>
+        {% for field in form %}
+        <div class="form-group d-flex justify-content-between align-items-center" style="width: 50rem">
+            <label for="disabledTextInput" class="form-label">{{field.label_tag}}</label>
+            <div>{{field}}</div>
+            {% if field.errors%}
+            {% for error in field.errors %}
+            <div class="alert alert-danger">
+                {{error}}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        {% endfor %}
+        </div>
+        <input type="submit" value="Send" >
+    </form>
+
 {% endblock %}

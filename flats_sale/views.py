@@ -5,7 +5,6 @@ from flats_sale.forms import FlatSearchForm
 from comment.forms import CommentForm
 from comment.models import Comment
 
-
 class SaleListView(ListView):
     model = Flat
     context_object_name = 'flats_sale'
@@ -27,10 +26,10 @@ class SaleListView(ListView):
         return render(request, self.template_name, self.get_context_data(object_list=flats))
 
 def sale_id_view(request, pk):
-    object_list = Object.objects.all()
-    category_list = Category.objects.all()
+    object_list = Object.objects.filter(pk=pk)
+    category_list = Category.objects.filter(object_name=pk)
     pk = get_object_or_404(Flat, pk=pk)
-    comments = pk.comments.all()
+    #comments = pk.comments.all()
     if request.method=="POST": 
         form = CommentForm(request.POST)
         if form.is_valid(): 
@@ -41,7 +40,7 @@ def sale_id_view(request, pk):
     else:
         form = CommentForm()
 
-    context = {"pk": pk,'page':'flats', 'comments_list':comments,
-               'form':form, 'category_list': category_list,
+    context = {"pk": pk,'page':'flats', #'comments_list':comments,
+               'form':form,'category_list': category_list,
                'object_list':object_list}
     return render(request, "flats_sale/flats_detail.html", context)

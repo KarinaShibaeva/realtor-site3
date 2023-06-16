@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Object(models.Model):
-    object_name=models.CharField(max_length=128, verbose_name="Название")
+    name=models.CharField(max_length=128, verbose_name="Название")
     text=models.TextField(blank=False, verbose_name="Описание")
     location=models.CharField(max_length=128, verbose_name="Расположение")
     
@@ -11,7 +11,7 @@ class Object(models.Model):
        verbose_name_plural = 'Объекты'
 
     def __str__(self):
-       return self.object_name
+       return self.name
     
 class Category(models.Model):
     name=models.CharField(max_length=128, verbose_name="Название")
@@ -36,3 +36,5 @@ class Flat(models.Model):
        verbose_name = 'Объявление'
        verbose_name_plural = 'Объявления'
 
+    def __unicode__(self):
+        return self.object_name.name

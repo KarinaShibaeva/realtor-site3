@@ -20,7 +20,7 @@ class SaleListView(ListView):
         form = FlatSearchForm(self.request.GET)
         if form.is_valid():
            cd = form.cleaned_data  
-           flats = self.model.objects.filter(name__icontains=cd['search'])
+           flats = self.model.objects.filter(object_name__name__icontains=cd['search'])
         else:    
             flats = self.model.objects.all()
         return render(request, self.template_name, self.get_context_data(object_list=flats))

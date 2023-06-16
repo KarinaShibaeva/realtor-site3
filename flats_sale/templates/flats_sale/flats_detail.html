@@ -40,7 +40,7 @@
       </div>
     </div>
 </div>
-<div class="mt-4 d-flex" style="background-color: #F0FFF0;">
+<div class="mt-4 d-flex" style="background-color: #F0F9F6;">
 <h3 class="text-center">Описание</h3>
     <div class="d-flex ms-5 me-5 align-items-center" style="width: 60rem;">
         <p class=" me-5">{{ object.text|linebreaksbr }}</p>
@@ -52,6 +52,7 @@
 </div>
 
 {% for category in category_list.all %}
+<div class="d-flex">
 <div class="card" style="width: 18rem;">
     <img src="{{ category.img.url }}" class="card-img-top" alt="...">
     <div class="card-body">
@@ -59,9 +60,10 @@
         <p class="fs-5">От {{ category.price|floatformat:0|intcomma }} ₽</p>
     </div>
 </div>
+</div>
 {% endfor %}
 {% endfor %}
-<div class="mt-4 d-flex flex-column justify-content-center" style="background-color: #F0FFF0;">
+<div class="mt-4 d-flex flex-column justify-content-center" style="background-color: #F0F9F6;">
 <div class="mt-5 ms-5 me-5">
     <h3 class="text-center">Остались вопросы или нужна консультация?</h3>
     <p class="text-center">Мы знаем, как быстро и без рисков купить квартиру в Санкт-Петербурге и Ленинградской области. Это возможно благодаря большому опыту работы в сфере недвижимости. В нашей базе большой выбор квартир, мы подберем для Вас идеальный вариант на выгодных условиях.</p>

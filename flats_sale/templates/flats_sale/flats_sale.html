@@ -11,7 +11,7 @@
             border:1px solid #ccc; 
             border-radius:5px;
             height:50px;
-            width:300px;
+            width:400px;
             margin: 10px 10px 10px 0;
         }
 .card-img-overlay{
@@ -21,7 +21,7 @@
 .card {
     transition: 1s; /* Время эффекта */
     width: 100%;
-    height: 35vw;
+    height: 45vw;
     object-fit: cover;
    }
 .card:hover {
@@ -31,32 +31,29 @@
 <div class="text d-flex justify-content-center flex-column mt-5">
     <h1 class="d-flex justify-content-center mt-5">Купить новую квартиру в Санкт-Петербурге</h1>
     <p class="" style="text-align: center">Поможем купить квартиру в новостройке по выгодной цене – агентство «Новые горизонты» гарантирует профессиональный подход, юридическую чистоту и финансовую безопасность сделки.</p>
-    <h3 class="d-flex justify-content-center mt-5">Каталог новостроек</h3>
 </div>
-
-<form method="get" novalidate>
-    {% csrf_token %}
-    
+<div class="mt-5" style="background-color: #F0F9F6";>
+    <h3 class="d-flex justify-content-center mt-5">Каталог новостроек</h3>
+    <form method="get" novalidate>
+        {% csrf_token %}
         {% for field in form %}
-        <div class="d-flex flex-row ms-3 align-items-center">
-        <div class="form-group d-flex align-items-center">
-        
-            <div>{{field}}</div>
-            {% if field.errors%}
-            {% for error in field.errors %}
-            <div class="alert alert-danger">
-                {{error}}
+        <div class="d-flex flex-row ms-4 mt-5 align-items-center">
+            <div class="form-group d-flex align-items-center">
+                <div>{{field}}</div>
+                {% if field.errors%}
+                {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    {{error}}
+                </div>
+                {% endfor %}
+                {% endif %}
             </div>
             {% endfor %}
-            {% endif %}
+            <input type="submit" class="btn btn" style="width: 100px; height:50px; background-color: #1A5686; color: #ffffff;" value="Найти" >
         </div>
-        {% endfor %}
-        <input type="submit" class="btn btn" style="width: 100px; height:50px; background-color: #5B8889; color: #ffffff;" value="Найти" >
-        </div>
-            </div>
-    </form>
+</form>
 
-<div class="d-flex justify-content-evenly">
+<div class="d-flex flex-wrap w-75 justify-content-around mt-5">
 {% for flat in flats_sale %}
 
 <div class="d-flex flex-row" style="height: 40rem">
@@ -67,12 +64,12 @@
                 <h5 class="card-title w-100" style="font-weight: 700;">{{ flat.object_name }}</h5>
                 <h6 class="card-subtitle mb-2 text-body-secondary">От {{ flat.price|floatformat:0|intcomma }} ₽</h6>
                 <p class="card-text">{{ flat.text }}</p>
-                <a href="{% url 'sale:flat' flat.pk%}" class="btn" style="background-color: #5B8889; color: #ffffff;">Подробнее</a>
+                <a href="{% url 'sale:flat' flat.pk%}" class="btn" style="background-color: #1A5686; color: #ffffff;">Подробнее</a>
             </div>
         </div>
     </div>
 </div>
-
 {% endfor %}
+</div>
 </div>
 {% endblock %}

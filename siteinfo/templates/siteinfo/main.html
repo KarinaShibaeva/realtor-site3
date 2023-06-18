@@ -67,28 +67,28 @@ h5{
 <div class="gallery-inner container py-lg-0 py-3 mt-5 d-flex justify-content-center">
       <div class="row stats-con pb-lg-3 d-flex justify-content-beetwen">
         <div class="col-lg-4 col-6">
-          <p class="counter" style="color: #5F9EA0; font-size: 60px;">15</p>
+          <p class="counter" style="color: #1A5686; font-size: 60px;">15</p>
           <h4>Лет на рынке</h4>
         </div>
         <div class="col-lg-4 col-6">
-          <p class="counter" style="color: #5F9EA0; font-size: 60px;">1698</p>
+          <p class="counter" style="color: #1A5686; font-size: 60px;">1698</p>
           <h4>Сделок с недвижимостью</h4>
         </div>
         <div class="col-lg-4 col-6">
-          <p class="counter" style="color: #5F9EA0; font-size: 60px;">2800</p>
+          <p class="counter" style="color: #1A5686; font-size: 60px;">2800</p>
           <h4>Обращений из разных городов</h4>
         </div>
     </div>
 </div>
 
-<div class="w-100  mt-5 d-flex justify-content-around" style="background-color: #F0F9F6; height: 80vh">
-<div class="mt-5 d-flex justify-content-around h-100 w-100">
+<div class="w-100 mt-5 d-flex justify-content-around" style="background-color: #F0F9F6; height: 35vw;">
+<div class="mt-5 d-flex justify-content-around w-100">
 <a class="nav-link text-dark" href="{% url 'flats:list' %}">
 <div class="card border border-info-subtle shadow-sm p-1 mb-3 bg-body-tertiary rounded" style="width: 18rem;">
   <img src="/media/10.jpg" class="card-img-top" alt="...">
   <div class="card-body ">
     <h3 class="card-text">Покупка недвижимости</h3>
-    <p class="fs-5">Быстро, понятно, без "подводных камней"</p>
+    <p style="font-size: 1rem;">Быстро, понятно, без "подводных камней"</p>
   </div>
 </div>
 </a>
@@ -96,7 +96,7 @@ h5{
   <img src="/media/12.jpeg" class="card-img-top" alt="...">
   <div class="card-body">
     <h3 class="card-text">Вторичный рынок</h3>
-    <p class="fs-5">Быстро и выгодно продать квартиру</p>
+    <p style="font-size: 1rem;">Быстро и выгодно продать квартиру</p>
   </div>
 </div>
 <a class="nav-link text-dark" href="{% url 'sale:sale' %}">
@@ -104,18 +104,20 @@ h5{
   <img src="/media/11.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h3 class="card-text">Новострой</h3>
-    <p class="fs-5">Выбираем квартиру в новостройке</p>
+    <p style="font-size: 1rem;">Выбираем квартиру в новостройке</p>
+  </div>
+</div>
+</a>
+<a class="nav-link text-dark text-decoration-none" href="#">
+<div class="card border border-info-subtle shadow-sm p-1 mb-3 bg-body-tertiary rounded" style="width: 18rem;">
+  <img src="/media/1901.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3 class="card-text">Продать квартиру</h3>
+    <p style="font-size: 1rem;">Поможем продать квартиру или комнату по выгодной цене</p>
   </div>
 </div>
 </a>
 </div>
-</div>
-<div class="w-100 d-flex flex-column justify-content-center align-items-center" style="background-image: url(/media/15.jpg); height: 450px; width: 900px;">
-    <h1 class="text-center fs-1" style="color: #ffffff;">Главная задача</h3>
-    <p class="fs-4 text-light text-center">Главная задача агентства недвижимости - помочь своим клиентам купить, продать или арендовать недвижимость.</p>
-    <a href="{% url 'info:about' %}">
-        <button class="btn btn-light" type="button">Подробнее</button>
-    </a>
 </div>
 
 {% endblock %}

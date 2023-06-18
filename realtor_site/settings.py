@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'flats_sale',
     'siteinfo',
     'comment',
+    'staff',
 ]
 
 MIDDLEWARE = [

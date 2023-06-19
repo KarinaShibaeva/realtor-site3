@@ -3,12 +3,31 @@ from flats_sale.models import Flat, Category, Object
 from django.views.generic import ListView
 from flats_sale.forms import FlatSearchForm
 from comment.forms import CommentForm
-from comment.models import Comment
+from django.core.paginator import Paginator
 
 class SaleListView(ListView):
     model = Flat
     context_object_name = 'flats_sale'
     template_name = 'flats_sale/flats_sale.html'
+    paginate_by = 3
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['object-count'] = self.model.objects.count()
+        paginator = Paginator(self.model.object_list, self.paginate_by)
+        try:
+            page = self.request.GET.get('page')
+        except:
+            page = 1
+           
+        try:
+            context[self.context_object_name] = paginator.page(page)
+        except:
+            context[self.context_object_name] = paginator.page(1)
+           
+        context['object-count'] = self.model.objects.count()
+        context['paginator'] = paginator
+        return context
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
@@ -23,7 +42,9 @@ class SaleListView(ListView):
            flats = self.model.objects.filter(object_name__name__icontains=cd['search'])
         else:    
             flats = self.model.objects.all()
+        
         return render(request, self.template_name, self.get_context_data(object_list=flats))
+    
 
 def sale_id_view(request, pk):
     object_list = Object.objects.filter(pk=pk)

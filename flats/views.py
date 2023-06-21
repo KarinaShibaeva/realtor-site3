@@ -1,15 +1,20 @@
 from django.shortcuts import render
 from comment.forms import CommentForm
 from comment.models import Comment
+from django.contrib import messages
 
 def flat_list_view(request):
     
     if request.method=="POST": 
         form = CommentForm(request.POST, request.FILES)
         if form.is_valid(): 
-            comment =  form.save(commit=False) 
-            #comment. = pk 
-            comment.save() 
+            obj = Comment() #gets new object
+            obj.author = form.cleaned_data['author']
+            obj.email = form.cleaned_data['email']
+            obj.phone = form.cleaned_data['phone']
+            obj.text = form.cleaned_data['text']
+            #finally save the object in db
+            obj.save()
             form = CommentForm() 
     else:
         form = CommentForm()
@@ -22,10 +27,14 @@ def flat_sell_view(request):
     if request.method=="POST": 
         form = CommentForm(request.POST, request.FILES)
         if form.is_valid(): 
-            comment =  form.save(commit=False) 
-            #comment. = pk 
-            comment.save() 
-            form = CommentForm() 
+            obj = Comment() #gets new object
+            obj.author = form.cleaned_data['author']
+            obj.email = form.cleaned_data['email']
+            obj.phone = form.cleaned_data['phone']
+            obj.text = form.cleaned_data['text']
+            #finally save the object in db
+            obj.save()
+            form = CommentForm()
     else:
         form = CommentForm()
 
@@ -36,10 +45,14 @@ def flats_sale2_view(request):
     if request.method=="POST": 
         form = CommentForm(request.POST, request.FILES)
         if form.is_valid(): 
-            comment =  form.save(commit=False) 
-            #comment. = pk 
-            comment.save() 
-            form = CommentForm() 
+            obj = Comment() #gets new object
+            obj.author = form.cleaned_data['author']
+            obj.email = form.cleaned_data['email']
+            obj.phone = form.cleaned_data['phone']
+            obj.text = form.cleaned_data['text']
+            #finally save the object in db
+            obj.save()
+            form = CommentForm()
     else:
         form = CommentForm()
     context = {"page": "flats_sale2", 'form':form}

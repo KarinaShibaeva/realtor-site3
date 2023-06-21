@@ -3,6 +3,7 @@ from flats_sale.models import Flat, Category, Object
 from django.views.generic import ListView
 from flats_sale.forms import FlatSearchForm
 from comment.forms import CommentForm
+from comment.models import Comment
 from django.core.paginator import Paginator
 
 class SaleListView(ListView):
@@ -54,9 +55,13 @@ def sale_id_view(request, pk):
     if request.method=="POST": 
         form = CommentForm(request.POST, request.FILES)
         if form.is_valid(): 
-            comment =  form.save(commit=False) 
-            #comment. = pk 
-            comment.save() 
+            obj = Comment() #gets new object
+            obj.author = form.cleaned_data['author']
+            obj.email = form.cleaned_data['email']
+            obj.phone = form.cleaned_data['phone']
+            obj.text = form.cleaned_data['text']
+            #finally save the object in db
+            obj.save()
             form = CommentForm() 
     else:
         form = CommentForm()

@@ -5,6 +5,7 @@ from flats_sale.forms import FlatSearchForm
 from comment.forms import CommentForm
 from comment.models import Comment
 from django.core.paginator import Paginator
+from django.contrib import messages
 
 class SaleListView(ListView):
     model = Flat
@@ -62,7 +63,9 @@ def sale_id_view(request, pk):
             obj.text = form.cleaned_data['text']
             #finally save the object in db
             obj.save()
-            form = CommentForm() 
+            messages.success(request, 'Ваша заявка отправлена')
+            form = CommentForm()
+
     else:
         form = CommentForm()
 

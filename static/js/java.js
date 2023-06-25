@@ -13,3 +13,8 @@ function animateValue(obj, start, end, duration) {
 
 const obj = document.getElementById("value");
 animateValue(obj, 100, 0, 5000);
+
+$('#form-id').submit(function(e){
+    $.post('your/url', $(this).serialize(), function(e){ ... });
+    e.preventDefault();
+});

@@ -30,6 +30,9 @@
 a {
     text-decoration: none;
 }
+.container-fluid{
+  padding: 0 !important;
+}
 </style>
 <div class="w-100 overflow-hidden d-flex flex-column align-items-stretch justify-content-center">
 <div class="text d-flex justify-content-center flex-column mt-5">
@@ -37,7 +40,7 @@ a {
     <p class="" style="text-align: center">Поможем купить квартиру в новостройке по выгодной цене – агентство «Новые горизонты» гарантирует профессиональный подход, юридическую чистоту и финансовую безопасность сделки.</p>
 </div>
 <div class="container-fluid">
-<div class="mt-5 h-100 d-flex flex-column align-items-center justify-content-center" style="background-color: #F0F9F6";>
+<div class="mt-5 h-100 w-100 d-flex flex-column align-items-center justify-content-center" style="background-color: #F0F9F6";>
     <h3 class="d-flex justify-content-center mt-4">Каталог новостроек</h3>
     <form method="get" novalidate>
         {% csrf_token %}

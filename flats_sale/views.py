@@ -10,7 +10,7 @@ class SaleListView(ListView):
     model = Flat
     context_object_name = 'flats_sale'
     template_name = 'flats_sale/flats_sale.html'
-    paginate_by = 3
+    paginate_by = 6
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)

@@ -8,9 +8,13 @@ def staff_view(request):
     if request.method=="POST": 
         form = CommentForm(request.POST, request.FILES)
         if form.is_valid(): 
-            comment =  form.save(commit=False) 
-            #comment. = pk 
-            comment.save() 
+            obj = Comment() #gets new object
+            obj.author = form.cleaned_data['author']
+            obj.email = form.cleaned_data['email']
+            obj.phone = form.cleaned_data['phone']
+            obj.text = form.cleaned_data['text']
+            #finally save the object in db
+            obj.save()
             form = CommentForm() 
     else:
         form = CommentForm()
